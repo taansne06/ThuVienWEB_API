@@ -5,7 +5,7 @@ namespace ThucHanhWEBAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController : ControllerBase
+    public class BookController : ControllerBase
     {
     }
 }
