@@ -1,0 +1,6 @@
+@ThucHanhWEBAPI_HostAddress = http://localhost:5268
+
+GET {{ThucHanhWEBAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
