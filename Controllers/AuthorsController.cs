@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ThucHanhWEBAPI.Data;
 using ThucHanhWEBAPI.Models.DTO;
 using ThucHanhWEBAPI.Repositories;
@@ -7,6 +8,7 @@ namespace ThucHanhWEBAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AuthorsController : ControllerBase
     {
         private readonly AppDbContext _dbContext;
@@ -19,13 +21,17 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpGet("get-all-author")]
-        public IActionResult GetAllAuthor()
+        [Authorize(Roles = "Read")]
+        public IActionResult GetAllAuthor([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
+            [FromQuery] string? sortBy, [FromQuery] bool isAscending,
+            [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 100)
         {
-            var allAuthors = _authorRepository.GellAllAuthors();
+            var allAuthors = _authorRepository.GellAllAuthors(filterOn, filterQuery, sortBy, isAscending, pageNumber, pageSize);
             return Ok(allAuthors);
         }
 
         [HttpGet("get-author-by-id/{id}")]
+        [Authorize(Roles = "Read")]
         public IActionResult GetAuthorById(int id)
         {
             var authorWithId = _authorRepository.GetAuthorById(id);
@@ -33,6 +39,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpPost("add-author")]
+        [Authorize(Roles = "Write")]
         public IActionResult AddAuthors([FromBody] AddAuthorRequestDTO addAuthorRequestDTO)
         {
             var authorAdd = _authorRepository.AddAuthor(addAuthorRequestDTO);
@@ -40,6 +47,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpPut("update-author-by-id/{id}")]
+        [Authorize(Roles = "Write")]
         public IActionResult UpdateAuthorById(int id, [FromBody] AuthorNoIdDTO authorDTO)
         {
             var authorUpdate = _authorRepository.UpdateAuthorById(id, authorDTO);
@@ -47,6 +55,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpDelete("delete-author-by-id/{id}")]
+        [Authorize(Roles = "Write")]
         public IActionResult DeleteAuthorById(int id)
         {
             var authorDelete = _authorRepository.DeleteAuthorById(id);
@@ -54,6 +63,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpGet("{id}/books")]
+        [Authorize(Roles = "Read")]
         public IActionResult GetBooksByAuthorId(int id)
         {
             var books = _authorRepository.GetBooksByAuthorId(id);

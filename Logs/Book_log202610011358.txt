@@ -1,0 +1,31 @@
+2026-10-01 13:58:55.812 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7260/api/Book/get-all-books?filterOn=title&filterQuery=Cu%E1%BB%99c%20%C4%90%E1%BB%9Di&sortBy=id&isAscending=true&pageNumber=1&pageSize=2 - null null
+2026-10-01 13:58:56.005 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.BookController.GetAll (ThucHanhWEBAPI)'
+2026-10-01 13:58:56.028 +07:00 [INF] Route matched with {action = "GetAll", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller ThucHanhWEBAPI.Controllers.BookController (ThucHanhWEBAPI).
+2026-10-01 13:58:56.441 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-10-01 13:58:56.448 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-10-01 13:58:57.086 +07:00 [INF] Executed DbCommand (67ms) [Parameters=[@__filterQuery_0_contains='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    WHERE [b].[Title] LIKE @__filterQuery_0_contains ESCAPE N'\'
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Id], [p].[Id], [t0].[Id]
+2026-10-01 13:58:57.115 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ThucHanhWEBAPI.Models.DTO.BookWithAuthorAndPublisherDTO, ThucHanhWEBAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-01 13:58:57.164 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.BookController.GetAll (ThucHanhWEBAPI) in 1126.9522ms
+2026-10-01 13:58:57.169 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.BookController.GetAll (ThucHanhWEBAPI)'
+2026-10-01 13:58:57.174 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7260/api/Book/get-all-books?filterOn=title&filterQuery=Cu%E1%BB%99c%20%C4%90%E1%BB%9Di&sortBy=id&isAscending=true&pageNumber=1&pageSize=2 - 200 null application/json; charset=utf-8 1366.2848ms

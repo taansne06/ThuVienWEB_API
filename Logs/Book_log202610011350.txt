@@ -1,0 +1,7 @@
+2026-10-01 13:50:44.298 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/User/Register - application/json 91
+2026-10-01 13:50:44.354 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.UserController.Register (ThucHanhWEBAPI)'
+2026-10-01 13:50:44.503 +07:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(ThucHanhWEBAPI.Models.DTO.RegisterRequestDTO) on controller ThucHanhWEBAPI.Controllers.UserController (ThucHanhWEBAPI).
+2026-10-01 13:50:46.042 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2026-10-01 13:50:46.071 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.UserController.Register (ThucHanhWEBAPI) in 1542.8652ms
+2026-10-01 13:50:46.078 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.UserController.Register (ThucHanhWEBAPI)'
+2026-10-01 13:50:46.089 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/User/Register - 400 null text/plain; charset=utf-8 1790.7325ms

@@ -1,0 +1,7 @@
+2026-10-01 14:02:31.705 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Book/add-book - application/json 274
+2026-10-01 14:02:31.758 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-01 14:02:31.765 +07:00 [INF] Route matched with {action = "AddBook", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddBook(ThucHanhWEBAPI.Models.DTO.AddBookRequestDTO) on controller ThucHanhWEBAPI.Controllers.BookController (ThucHanhWEBAPI).
+2026-10-01 14:02:31.838 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-10-01 14:02:31.880 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI) in 109.7306ms
+2026-10-01 14:02:31.884 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-01 14:02:31.887 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Book/add-book - 400 null application/problem+json; charset=utf-8 183.7044ms

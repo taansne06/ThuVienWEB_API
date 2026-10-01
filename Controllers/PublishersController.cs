@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ThucHanhWEBAPI.Data;
 using ThucHanhWEBAPI.Models.DTO;
 using ThucHanhWEBAPI.Repositories;
@@ -7,6 +8,7 @@ namespace ThucHanhWEBAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PublishersController : ControllerBase
     {
         private readonly AppDbContext _dbContext;
@@ -19,6 +21,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpGet("get-all-publisher")]
+        [Authorize(Roles = "Read")]
         public IActionResult GetAllPublisher()
         {
             var allPublishers = _publisherRepository.GetAllPublishers();
@@ -26,6 +29,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpGet("get-publisher-by-id/{id}")]
+        [Authorize(Roles = "Read")]
         public IActionResult GetPublisherById(int id)
         {
             var publisherWithId = _publisherRepository.GetPublisherById(id);
@@ -37,6 +41,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpPost("add-publisher")]
+        [Authorize(Roles = "Write")]
         public IActionResult AddPublisher([FromBody] AddPublisherRequestDTO addPublisherRequestDTO)
         {
             var publisherAdd = _publisherRepository.AddPublisher(addPublisherRequestDTO);
@@ -44,6 +49,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpPut("update-publisher-by-id/{id}")]
+        [Authorize(Roles = "Write")]
         public IActionResult UpdatePublisherById(int id, [FromBody] PublisherNoIdDTO publisherDTO)
         {
             var publisherUpdate = _publisherRepository.UpdatePublisherById(id, publisherDTO);
@@ -55,6 +61,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpDelete("delete-publisher-by-id/{id}")]
+        [Authorize(Roles = "Write")]
         public IActionResult DeletePublisherById(int id)
         {
             var publisherDelete = _publisherRepository.DeletePublisherById(id);
@@ -66,6 +73,7 @@ namespace ThucHanhWEBAPI.Controllers
         }
 
         [HttpGet("{id}/books")]
+        [Authorize(Roles = "Read")]
         public IActionResult GetBooksByPublisherId(int id)
         {
             var books = _publisherRepository.GetBooksByPublisherId(id);

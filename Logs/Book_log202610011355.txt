@@ -1,0 +1,16 @@
+2026-10-01 13:55:09.881 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/User/Login - application/json 59
+2026-10-01 13:55:09.925 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI)'
+2026-10-01 13:55:09.955 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ThucHanhWEBAPI.Models.DTO.LoginRequestDTO) on controller ThucHanhWEBAPI.Controllers.UserController (ThucHanhWEBAPI).
+2026-10-01 13:55:10.082 +07:00 [INF] Executed DbCommand (29ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-10-01 13:55:10.519 +07:00 [INF] Executed DbCommand (40ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-10-01 13:55:11.316 +07:00 [INF] Executing OkObjectResult, writing value of type 'ThucHanhWEBAPI.Models.DTO.LoginResponseDTO'.
+2026-10-01 13:55:11.331 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI) in 1363.7867ms
+2026-10-01 13:55:11.340 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI)'
+2026-10-01 13:55:11.346 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/User/Login - 200 null application/json; charset=utf-8 1466.1288ms

@@ -1,0 +1,5 @@
+2026-10-01 14:01:20.639 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7260/api/Book/get-all-books?filterOn=title&filterQuery=Cu%E1%BB%99c%20%C4%90%E1%BB%9Di&sortBy=id&isAscending=true&pageNumber=1&pageSize=2 - null null
+2026-10-01 14:01:20.710 +07:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Read)
+2026-10-01 14:01:20.725 +07:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2026-10-01 14:01:20.730 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7260/api/Book/get-all-books?filterOn=title&filterQuery=Cu%E1%BB%99c%20%C4%90%E1%BB%9Di&sortBy=id&isAscending=true&pageNumber=1&pageSize=2 - 403 0 null 92.2196ms

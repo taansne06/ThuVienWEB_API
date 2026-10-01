@@ -1,0 +1,19 @@
+2026-10-01 14:05:31.684 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Book/add-book - application/json 403
+2026-10-01 14:05:31.743 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-01 14:05:31.746 +07:00 [INF] Route matched with {action = "AddBook", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddBook(ThucHanhWEBAPI.Models.DTO.AddBookRequestDTO) on controller ThucHanhWEBAPI.Controllers.BookController (ThucHanhWEBAPI).
+2026-10-01 14:05:31.999 +07:00 [INF] Executed DbCommand (47ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books] ([CoverUrl], [DateAdded], [DateRead], [Description], [Genre], [IsRead], [PublisherID], [Rate], [Title])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2026-10-01 14:05:32.138 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books_Authors] ([AuthorId], [BookId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2026-10-01 14:05:32.153 +07:00 [INF] Executing OkObjectResult, writing value of type 'ThucHanhWEBAPI.Models.DTO.AddBookRequestDTO'.
+2026-10-01 14:05:32.166 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI) in 414.4005ms
+2026-10-01 14:05:32.171 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-01 14:05:32.176 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Book/add-book - 200 null application/json; charset=utf-8 491.4631ms

@@ -14,7 +14,8 @@ namespace ThucHanhWEBAPI.Repositories
             _dbContext = dbContext;
         }
 
-        public List<BookWithAuthorAndPublisherDTO> GetAllBooks()
+        public List<BookWithAuthorAndPublisherDTO> GetAllBooks(string? filterOn = null, string? filterQuery = null,
+            string? sortBy = null, bool isAscending = true, int pageNumber = 1, int pageSize = 1000)
         {
             var allBooks = _dbContext.Books.Select(Books => new BookWithAuthorAndPublisherDTO()
             {
@@ -28,9 +29,38 @@ namespace ThucHanhWEBAPI.Repositories
                 CoverUrl = Books.CoverUrl,
                 PublisherName = Books.Publisher.Name,
                 AuthorNames = Books.Book_Authors.Select(n => n.Author.FullName).ToList()
-            }).ToList();
+            }).AsQueryable();
 
-            return allBooks;
+            //filtering
+            if (string.IsNullOrWhiteSpace(filterOn) == false && string.IsNullOrWhiteSpace(filterQuery) == false)
+            {
+                if (filterOn.Equals("title", StringComparison.OrdinalIgnoreCase))
+                {
+                    allBooks = allBooks.Where(x => x.Title.Contains(filterQuery));
+                }
+                else if (filterOn.Equals("description", StringComparison.OrdinalIgnoreCase))
+                {
+                    allBooks = allBooks.Where(x => x.Description.Contains(filterQuery));
+                }
+                else if (filterOn.Equals("rate", StringComparison.OrdinalIgnoreCase)
+                    && int.TryParse(filterQuery, out var rate))
+                {
+                    allBooks = allBooks.Where(x => x.Rate == rate);
+                }
+            }
+
+            //sorting
+            if (string.IsNullOrWhiteSpace(sortBy) == false)
+            {
+                if (sortBy.Equals("title", StringComparison.OrdinalIgnoreCase))
+                {
+                    allBooks = isAscending ? allBooks.OrderBy(x => x.Title) : allBooks.OrderByDescending(x => x.Title);
+                }
+            }
+
+            //pagination
+            var skipResults = (pageNumber - 1) * pageSize;
+            return allBooks.Skip(skipResults).Take(pageSize).ToList();
         }
 
         public BookWithAuthorAndPublisherDTO GetBookById(int id)
