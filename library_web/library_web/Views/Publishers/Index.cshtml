@@ -1,0 +1,39 @@
+﻿@model IEnumerable<library_web.Models.DTO.publisherDTO>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="m-0">List all publishers</h2>
+    <a class="btn btn-primary" asp-controller="Publishers" asp-action="addPublisher">+ Add new publisher</a>
+</div>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Id code</th>
+            <th>Name</th>
+            <th>Detail</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td><a class="btn btn-sm btn-outline-secondary" asp-controller="Publishers" asp-action="listPublisher" asp-route-id="@item.Id">Detail</a></td>
+                <td><a class="btn btn-sm btn-outline-primary" asp-controller="Publishers" asp-action="editPublisher" asp-route-id="@item.Id">Edit</a></td>
+                <td><a class="btn btn-sm btn-outline-danger" asp-controller="Publishers" asp-action="delPublisher" asp-route-id="@item.Id" onclick="return confirm('Xóa nhà xuất bản sẽ xóa luôn các sách của nhà xuất bản này. Bạn có chắc không?');">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

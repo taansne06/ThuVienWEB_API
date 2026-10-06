@@ -1,0 +1,38 @@
+2026-10-06 07:56:10.035 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7260/api/User/Login - application/json; charset=utf-8 null
+2026-10-06 07:56:10.047 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI)'
+2026-10-06 07:56:10.052 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ThucHanhWEBAPI.Models.DTO.LoginRequestDTO) on controller ThucHanhWEBAPI.Controllers.UserController (ThucHanhWEBAPI).
+2026-10-06 07:56:10.070 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-10-06 07:56:10.286 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-10-06 07:56:10.292 +07:00 [INF] Executing OkObjectResult, writing value of type 'ThucHanhWEBAPI.Models.DTO.LoginResponseDTO'.
+2026-10-06 07:56:10.308 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI) in 252.5546ms
+2026-10-06 07:56:10.332 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI)'
+2026-10-06 07:56:10.338 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7260/api/User/Login - 200 null application/json; charset=utf-8 302.3773ms
+2026-10-06 07:56:10.360 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7260/api/Authors/get-all-author - null null
+2026-10-06 07:56:10.378 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.AuthorsController.GetAllAuthor (ThucHanhWEBAPI)'
+2026-10-06 07:56:10.381 +07:00 [INF] Route matched with {action = "GetAllAuthor", controller = "Authors"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllAuthor(System.String, System.String, System.String, Boolean, Int32, Int32) on controller ThucHanhWEBAPI.Controllers.AuthorsController (ThucHanhWEBAPI).
+2026-10-06 07:56:10.423 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FullName]
+FROM [Authors] AS [a]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-10-06 07:56:10.430 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ThucHanhWEBAPI.Models.DTO.AuthorDTO, ThucHanhWEBAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 07:56:10.435 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.AuthorsController.GetAllAuthor (ThucHanhWEBAPI) in 24.2938ms
+2026-10-06 07:56:10.442 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.AuthorsController.GetAllAuthor (ThucHanhWEBAPI)'
+2026-10-06 07:56:10.445 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7260/api/Authors/get-all-author - 200 null application/json; charset=utf-8 85.4779ms
+2026-10-06 07:56:10.455 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7260/api/Publishers/get-all-publisher - null null
+2026-10-06 07:56:10.463 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.PublishersController.GetAllPublisher (ThucHanhWEBAPI)'
+2026-10-06 07:56:10.467 +07:00 [INF] Route matched with {action = "GetAllPublisher", controller = "Publishers"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllPublisher() on controller ThucHanhWEBAPI.Controllers.PublishersController (ThucHanhWEBAPI).
+2026-10-06 07:56:10.479 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+2026-10-06 07:56:10.486 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ThucHanhWEBAPI.Models.DTO.PublisherDTO, ThucHanhWEBAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 07:56:10.489 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.PublishersController.GetAllPublisher (ThucHanhWEBAPI) in 17.5165ms
+2026-10-06 07:56:10.493 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.PublishersController.GetAllPublisher (ThucHanhWEBAPI)'
+2026-10-06 07:56:10.498 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7260/api/Publishers/get-all-publisher - 200 null application/json; charset=utf-8 42.4374ms

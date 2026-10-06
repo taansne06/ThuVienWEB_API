@@ -1,0 +1,11 @@
+2026-10-06 08:13:02.023 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7260/api/Images/Download?id=4 - null null
+2026-10-06 08:13:02.041 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.DownloadImage (ThucHanhWEBAPI)'
+2026-10-06 08:13:02.046 +07:00 [INF] Route matched with {action = "DownloadImage", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadImage(Int32) on controller ThucHanhWEBAPI.Controllers.ImagesController (ThucHanhWEBAPI).
+2026-10-06 08:13:02.074 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileDescription], [i].[FileExtension], [i].[FileName], [i].[FilePath], [i].[FileSizeInBytes]
+FROM [Images] AS [i]
+WHERE [i].[Id] = @__Id_0
+2026-10-06 08:13:02.086 +07:00 [INF] Executing FileContentResult, sending file with download name 'st.jpg' ...
+2026-10-06 08:13:02.096 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.ImagesController.DownloadImage (ThucHanhWEBAPI) in 43.2901ms
+2026-10-06 08:13:02.101 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.DownloadImage (ThucHanhWEBAPI)'
+2026-10-06 08:13:02.106 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7260/api/Images/Download?id=4 - 200 8455 application/octet-stream 83.3427ms

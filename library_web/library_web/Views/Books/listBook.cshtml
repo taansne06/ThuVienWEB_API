@@ -1,0 +1,57 @@
+﻿@model library_web.Models.DTO.BookDTO
+
+<h2 class="mb-3">Thông tin sách</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-3 p-3">
+            @if (!string.IsNullOrEmpty(Model.CoverUrl))
+            {
+                <img src="@Model.CoverUrl" class="img-fluid rounded" alt="Bìa sách" />
+            }
+        </div>
+        <div class="col-md-9">
+            <div class="card-body">
+                <h4 class="card-title">@Model.Title</h4>
+                <p class="card-text">@Model.Description</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Thể loại:</strong> @Model.Genre</li>
+                    <li class="list-group-item"><strong>Nhà xuất bản:</strong> @Model.PublisherName</li>
+                    <li class="list-group-item">
+                        <strong>Tác giả:</strong>
+                        @foreach (var item in Model.AuthorNames)
+                        {
+                            <span class="badge bg-secondary">@item</span>
+                        }
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Trạng thái:</strong>
+                        @if (Model.IsRead)
+                        {
+                            <span class="badge bg-success">Đã đọc</span>
+                            <span class="text-warning">
+                                @for (var i = 0; i < Model.Rate; i++)
+                                {
+                                    <span>★</span>
+                                }
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">Chưa đọc</span>
+                        }
+                    </li>
+                    <li class="list-group-item"><strong>Ngày đọc:</strong> @Model.DateRead</li>
+                    <li class="list-group-item"><strong>Ngày thêm:</strong> @Model.DateAdded</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a class="btn btn-secondary" asp-controller="Books" asp-action="Index">Quay lại danh sách</a>

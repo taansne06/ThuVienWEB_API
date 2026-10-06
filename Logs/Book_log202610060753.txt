@@ -1,0 +1,97 @@
+2026-10-06 07:53:17.784 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7260/api/User/Login - application/json; charset=utf-8 null
+2026-10-06 07:53:17.807 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI)'
+2026-10-06 07:53:17.812 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ThucHanhWEBAPI.Models.DTO.LoginRequestDTO) on controller ThucHanhWEBAPI.Controllers.UserController (ThucHanhWEBAPI).
+2026-10-06 07:53:17.866 +07:00 [INF] Executed DbCommand (14ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-10-06 07:53:18.066 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-10-06 07:53:18.078 +07:00 [INF] Executing OkObjectResult, writing value of type 'ThucHanhWEBAPI.Models.DTO.LoginResponseDTO'.
+2026-10-06 07:53:18.082 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI) in 263.2331ms
+2026-10-06 07:53:18.087 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI)'
+2026-10-06 07:53:18.093 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7260/api/User/Login - 200 null application/json; charset=utf-8 309.1274ms
+2026-10-06 07:53:18.114 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7260/api/Book/get-all-books?filterOn=&filterQuery=&sortBy=&isAscending=True&pageNumber=1&pageSize=100 - null null
+2026-10-06 07:53:18.126 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.BookController.GetAll (ThucHanhWEBAPI)'
+2026-10-06 07:53:18.130 +07:00 [INF] Route matched with {action = "GetAll", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller ThucHanhWEBAPI.Controllers.BookController (ThucHanhWEBAPI).
+2026-10-06 07:53:18.141 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 07:53:18.144 +07:00 [WRN] This is a warning log
+2026-10-06 07:53:18.148 +07:00 [ERR] This is a error log
+2026-10-06 07:53:18.182 +07:00 [INF] Executed DbCommand (25ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 07:53:18.193 +07:00 [INF] Finished GetAllBook request with data [{"Id":7,"Title":"Nh\u1EADt K\u1EF9 Banh B\u00F3ng C\u1EE7a T\u00F4i","Description":"H\u01B0 C\u1EA5u","IsRead":true,"DateRead":"2026-09-23T00:00:00","Rate":5,"Genre":"V\u0103n h\u1ECDc","CoverUrl":"","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":8,"Title":" Cu\u1ED9c \u0111\u1EDDi c\u1EE7a Vinh Heo","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":9,"Title":" Cu\u1ED9c \u0111\u1EDDi c\u1EE7a Vinh L\u01A1n","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":10,"Title":" Cu\u1ED9c \u0111\u1EDDi Banh B\u00F3ng c\u1EE7a Vinh","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":11,"Title":" Cu\u1ED9c \u0111\u1EDDi t\u00E1n g\u00E1i c\u1EE7a Vinh","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":12,"Title":" Cu\u1ED9c \u0111\u1EDDi Xa \u0110\u1ECDa C\u1EE7a Vinh Gi\u00E0 D\u01A1","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":13,"Title":"Ch\u00E0o em Nha ","Description":"Kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:54:13.457","Rate":3,"Genre":"b\u1ED1c ph\u00E9t","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":14,"Title":"S\u1EA7u c\u1EE7a ri\u00EAng em","Description":"Cu\u1ED1n s\u00E1ch k\u1EC3 v\u1EC1 nh\u1EEFng n\u1ED7i bu\u1ED3n r\u1EA5t ri\u00EAng c\u1EE7a m\u1ED9t ng\u01B0\u1EDDi tr\u1EBB, \u0111\u01B0\u1EE3c vi\u1EBFt b\u1EB1ng gi\u1ECDng v\u0103n nh\u1EB9 nh\u00E0ng.","IsRead":true,"DateRead":"2026-10-01T07:02:01.051","Rate":5,"Genre":"Van hoc","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]}]
+2026-10-06 07:53:18.203 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ThucHanhWEBAPI.Models.DTO.BookWithAuthorAndPublisherDTO, ThucHanhWEBAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 07:53:18.210 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.BookController.GetAll (ThucHanhWEBAPI) in 74.2911ms
+2026-10-06 07:53:18.214 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.BookController.GetAll (ThucHanhWEBAPI)'
+2026-10-06 07:53:18.218 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7260/api/Book/get-all-books?filterOn=&filterQuery=&sortBy=&isAscending=True&pageNumber=1&pageSize=100 - 200 null application/json; charset=utf-8 104.4828ms
+2026-10-06 07:53:22.974 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7260/api/User/Login - application/json; charset=utf-8 null
+2026-10-06 07:53:22.991 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI)'
+2026-10-06 07:53:22.998 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ThucHanhWEBAPI.Models.DTO.LoginRequestDTO) on controller ThucHanhWEBAPI.Controllers.UserController (ThucHanhWEBAPI).
+2026-10-06 07:53:23.028 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-10-06 07:53:23.307 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-10-06 07:53:23.316 +07:00 [INF] Executing OkObjectResult, writing value of type 'ThucHanhWEBAPI.Models.DTO.LoginResponseDTO'.
+2026-10-06 07:53:23.322 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI) in 315.4914ms
+2026-10-06 07:53:23.333 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI)'
+2026-10-06 07:53:23.339 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7260/api/User/Login - 200 null application/json; charset=utf-8 364.672ms
+2026-10-06 07:53:23.353 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7260/api/Book/get-all-books?filterOn=title&filterQuery=Vinh&sortBy=title&isAscending=True&pageNumber=1&pageSize=100 - null null
+2026-10-06 07:53:23.363 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.BookController.GetAll (ThucHanhWEBAPI)'
+2026-10-06 07:53:23.367 +07:00 [INF] Route matched with {action = "GetAll", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller ThucHanhWEBAPI.Controllers.BookController (ThucHanhWEBAPI).
+2026-10-06 07:53:23.377 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 07:53:23.380 +07:00 [WRN] This is a warning log
+2026-10-06 07:53:23.382 +07:00 [ERR] This is a error log
+2026-10-06 07:53:23.538 +07:00 [INF] Executed DbCommand (66ms) [Parameters=[@__filterQuery_0_contains='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    WHERE [b].[Title] LIKE @__filterQuery_0_contains ESCAPE N'\'
+    ORDER BY [b].[Title]
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Title], [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 07:53:23.548 +07:00 [INF] Finished GetAllBook request with data [{"Id":10,"Title":" Cu\u1ED9c \u0111\u1EDDi Banh B\u00F3ng c\u1EE7a Vinh","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":8,"Title":" Cu\u1ED9c \u0111\u1EDDi c\u1EE7a Vinh Heo","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":9,"Title":" Cu\u1ED9c \u0111\u1EDDi c\u1EE7a Vinh L\u01A1n","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":11,"Title":" Cu\u1ED9c \u0111\u1EDDi t\u00E1n g\u00E1i c\u1EE7a Vinh","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]},{"Id":12,"Title":" Cu\u1ED9c \u0111\u1EDDi Xa \u0110\u1ECDa C\u1EE7a Vinh Gi\u00E0 D\u01A1","Description":"kh\u00F4ng","IsRead":true,"DateRead":"2026-09-30T07:31:41.912","Rate":1,"Genre":"string","CoverUrl":"string","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB D\u01B0\u01A1ng V\u00F5 Quang Vinh","AuthorNames":["Vinh D\u01B0\u1EE1ng"]}]
+2026-10-06 07:53:23.562 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ThucHanhWEBAPI.Models.DTO.BookWithAuthorAndPublisherDTO, ThucHanhWEBAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 07:53:23.569 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.BookController.GetAll (ThucHanhWEBAPI) in 194.5272ms
+2026-10-06 07:53:23.577 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.BookController.GetAll (ThucHanhWEBAPI)'
+2026-10-06 07:53:23.584 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7260/api/Book/get-all-books?filterOn=title&filterQuery=Vinh&sortBy=title&isAscending=True&pageNumber=1&pageSize=100 - 200 null application/json; charset=utf-8 229.3481ms

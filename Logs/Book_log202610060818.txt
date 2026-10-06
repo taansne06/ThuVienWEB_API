@@ -1,0 +1,33 @@
+2026-10-06 08:18:31.469 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Book/add-book - application/json 325
+2026-10-06 08:18:31.587 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-06 08:18:31.599 +07:00 [INF] Route matched with {action = "AddBook", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddBook(ThucHanhWEBAPI.Models.DTO.AddBookRequestDTO) on controller ThucHanhWEBAPI.Controllers.BookController (ThucHanhWEBAPI).
+2026-10-06 08:18:31.663 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-10-06 08:18:31.717 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI) in 112.3165ms
+2026-10-06 08:18:31.721 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-06 08:18:31.723 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Book/add-book - 400 null application/problem+json; charset=utf-8 254.3413ms
+2026-10-06 08:18:47.002 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Book/add-book - application/json 332
+2026-10-06 08:18:47.017 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-06 08:18:47.021 +07:00 [INF] Route matched with {action = "AddBook", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddBook(ThucHanhWEBAPI.Models.DTO.AddBookRequestDTO) on controller ThucHanhWEBAPI.Controllers.BookController (ThucHanhWEBAPI).
+2026-10-06 08:18:47.029 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-10-06 08:18:47.033 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI) in 6.0353ms
+2026-10-06 08:18:47.036 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-06 08:18:47.039 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Book/add-book - 400 null application/problem+json; charset=utf-8 36.872ms
+2026-10-06 08:18:57.590 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Book/add-book - application/json 386
+2026-10-06 08:18:57.600 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-06 08:18:57.603 +07:00 [INF] Route matched with {action = "AddBook", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddBook(ThucHanhWEBAPI.Models.DTO.AddBookRequestDTO) on controller ThucHanhWEBAPI.Controllers.BookController (ThucHanhWEBAPI).
+2026-10-06 08:18:57.854 +07:00 [INF] Executed DbCommand (20ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books] ([CoverUrl], [DateAdded], [DateRead], [Description], [Genre], [IsRead], [PublisherID], [Rate], [Title])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2026-10-06 08:18:57.926 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books_Authors] ([AuthorId], [BookId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2026-10-06 08:18:57.939 +07:00 [INF] Executing OkObjectResult, writing value of type 'ThucHanhWEBAPI.Models.DTO.AddBookRequestDTO'.
+2026-10-06 08:18:57.955 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI) in 347.75ms
+2026-10-06 08:18:57.961 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-06 08:18:57.963 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Book/add-book - 200 null application/json; charset=utf-8 373.2805ms

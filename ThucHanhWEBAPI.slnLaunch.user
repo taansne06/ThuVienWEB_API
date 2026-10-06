@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "ThucHanhWEBAPI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "library_web\\library_web\\library_web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

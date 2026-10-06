@@ -1,0 +1,17 @@
+﻿@model library_web.Models.DTO.addPublisherDTO
+
+<h2 class="mb-3">Add new publisher</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form asp-controller="Publishers" asp-action="addPublisher" method="POST" class="col-md-6">
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" asp-for="Name" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a class="btn btn-secondary" asp-controller="Publishers" asp-action="Index">Cancel</a>
+</form>

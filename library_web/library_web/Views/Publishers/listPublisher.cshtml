@@ -1,0 +1,17 @@
+﻿@model library_web.Models.DTO.publisherNoIdDTO
+
+<h2 class="mb-3">Thông tin nhà xuất bản</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<div class="card mb-3 col-md-6">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Id:</strong> @ViewBag.Id</li>
+        <li class="list-group-item"><strong>Tên:</strong> @Model.Name</li>
+    </ul>
+</div>
+
+<a class="btn btn-secondary" asp-controller="Publishers" asp-action="Index">Quay lại danh sách</a>

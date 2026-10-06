@@ -1,0 +1,12 @@
+2026-10-06 07:59:07.189 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Book/add-book - application/json 344
+2026-10-06 07:59:07.205 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Write)
+2026-10-06 07:59:07.209 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-10-06 07:59:07.214 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Book/add-book - 401 0 null 25.1487ms
+2026-10-06 07:59:42.150 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Book/add-book - application/json 344
+2026-10-06 07:59:42.177 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Write)
+2026-10-06 07:59:42.184 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-10-06 07:59:42.192 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Book/add-book - 401 0 null 43.6754ms

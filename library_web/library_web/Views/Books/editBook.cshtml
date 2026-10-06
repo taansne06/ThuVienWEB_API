@@ -1,0 +1,80 @@
+﻿@model library_web.Models.DTO.editBookDTO
+@using library_web.Models.DTO
+@{
+    var book = (BookDTO)ViewBag.Book;
+    var listAuthor = (List<authorDTO>)ViewBag.listAuthor;
+    var listPublisher = (List<publisherDTO>)ViewBag.listPublisher;
+}
+
+<h2 class="mb-3">Edit book</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form asp-controller="Books" asp-action="editBook" asp-route-id="@book.Id" method="POST" class="col-md-7">
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" value="@book.Title" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input type="text" name="description" class="form-control" value="@book.Description" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label d-block">IsRead</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="isRead" id="isReadYes" value="True" checked="@book.IsRead" />
+            <label class="form-check-label" for="isReadYes">Yes</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="isRead" id="isReadNo" value="False" checked="@(!book.IsRead)" />
+            <label class="form-check-label" for="isReadNo">No</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">DateRead</label>
+            <input type="text" name="dateRead" class="form-control" value="@book.DateRead" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">DateAdded</label>
+            <input type="text" name="dateAdded" class="form-control" value="@book.DateAdded" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Rate (0 - 5)</label>
+            <input type="number" name="rate" min="0" max="5" class="form-control" value="@book.Rate" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Genre</label>
+            <input type="text" name="genre" class="form-control" value="@book.Genre" />
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Cover Url</label>
+        <input type="text" name="coverUrl" class="form-control" value="@book.CoverUrl" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Publisher</label>
+        <select name="publisherID" class="form-select">
+            @foreach (var item in listPublisher)
+            {
+                <option value="@item.Id" selected="@(book.PublisherName == item.Name)">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Author (giữ Ctrl để chọn nhiều)</label>
+        <select name="authorIds" multiple size="5" class="form-select">
+            @foreach (var item in listAuthor)
+            {
+                <option value="@item.Id" selected="@(book.AuthorNames.Contains(item.FullName))">@item.FullName</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a class="btn btn-secondary" asp-controller="Books" asp-action="Index">Cancel</a>
+</form>

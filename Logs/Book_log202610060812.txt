@@ -1,0 +1,13 @@
+2026-10-06 08:12:51.716 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Images/Upload - multipart/form-data; boundary=----WebKitFormBoundarysWSQx0iud2y1eTYU 8849
+2026-10-06 08:12:51.777 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.Upload (ThucHanhWEBAPI)'
+2026-10-06 08:12:51.789 +07:00 [INF] Route matched with {action = "Upload", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Upload(ThucHanhWEBAPI.Models.DTO.ImageUploadRequestDTO) on controller ThucHanhWEBAPI.Controllers.ImagesController (ThucHanhWEBAPI).
+2026-10-06 08:12:51.820 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Images] ([FileDescription], [FileExtension], [FileName], [FilePath], [FileSizeInBytes])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-10-06 08:12:51.828 +07:00 [INF] Executing OkObjectResult, writing value of type 'ThucHanhWEBAPI.Models.Domain.Image'.
+2026-10-06 08:12:51.833 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.ImagesController.Upload (ThucHanhWEBAPI) in 35.1312ms
+2026-10-06 08:12:51.837 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.Upload (ThucHanhWEBAPI)'
+2026-10-06 08:12:51.841 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Images/Upload - 200 null application/json; charset=utf-8 125.4192ms

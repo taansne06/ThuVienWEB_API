@@ -1,0 +1,26 @@
+2026-10-06 08:10:29.393 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Images/Upload - multipart/form-data; boundary=----WebKitFormBoundaryotnayIkFFGE2oBji 67051
+2026-10-06 08:10:29.582 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.Upload (ThucHanhWEBAPI)'
+2026-10-06 08:10:29.695 +07:00 [INF] Route matched with {action = "Upload", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Upload(ThucHanhWEBAPI.Models.DTO.ImageUploadRequestDTO) on controller ThucHanhWEBAPI.Controllers.ImagesController (ThucHanhWEBAPI).
+2026-10-06 08:10:32.769 +07:00 [INF] Executed DbCommand (84ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Images] ([FileDescription], [FileExtension], [FileName], [FilePath], [FileSizeInBytes])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-10-06 08:10:32.862 +07:00 [INF] Executing OkObjectResult, writing value of type 'ThucHanhWEBAPI.Models.Domain.Image'.
+2026-10-06 08:10:32.919 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.ImagesController.Upload (ThucHanhWEBAPI) in 3206.5406ms
+2026-10-06 08:10:32.924 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.Upload (ThucHanhWEBAPI)'
+2026-10-06 08:10:32.955 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Images/Upload - 200 null application/json; charset=utf-8 3561.4607ms
+2026-10-06 08:10:44.921 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7260/api/Images - null null
+2026-10-06 08:10:44.975 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.GetAllInfoImages (ThucHanhWEBAPI)'
+2026-10-06 08:10:44.989 +07:00 [INF] Route matched with {action = "GetAllInfoImages", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllInfoImages() on controller ThucHanhWEBAPI.Controllers.ImagesController (ThucHanhWEBAPI).
+2026-10-06 08:10:45.623 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[FileDescription], [i].[FileExtension], [i].[FileName], [i].[FilePath], [i].[FileSizeInBytes]
+FROM [Images] AS [i]
+2026-10-06 08:10:45.653 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ThucHanhWEBAPI.Models.Domain.Image, ThucHanhWEBAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 08:10:45.662 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.ImagesController.GetAllInfoImages (ThucHanhWEBAPI) in 664.4364ms
+2026-10-06 08:10:45.668 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.GetAllInfoImages (ThucHanhWEBAPI)'
+2026-10-06 08:10:45.673 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7260/api/Images - 200 null application/json; charset=utf-8 753.2809ms
+2026-10-06 08:10:59.931 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7260/api/Images/Download?id=3 - null null
+2026-10-06 08:10:59.945 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.DownloadImage (ThucHanhWEBAPI)'
+2026-10-06 08:10:59.952 +07:00 [INF] Route matched with {action = "DownloadImage", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadImage(Int32) on controller ThucHanhWEBAPI.Controllers.ImagesController (ThucHanhWEBAPI).

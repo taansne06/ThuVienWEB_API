@@ -1,0 +1,8 @@
+2026-10-06 08:11:00.229 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileDescription], [i].[FileExtension], [i].[FileName], [i].[FilePath], [i].[FileSizeInBytes]
+FROM [Images] AS [i]
+WHERE [i].[Id] = @__Id_0
+2026-10-06 08:11:00.256 +07:00 [INF] Executing FileContentResult, sending file with download name 'Tanmotcu.jpg' ...
+2026-10-06 08:11:00.282 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.ImagesController.DownloadImage (ThucHanhWEBAPI) in 325.1346ms
+2026-10-06 08:11:00.288 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.ImagesController.DownloadImage (ThucHanhWEBAPI)'
+2026-10-06 08:11:00.295 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7260/api/Images/Download?id=3 - 200 66652 application/octet-stream 364.4562ms

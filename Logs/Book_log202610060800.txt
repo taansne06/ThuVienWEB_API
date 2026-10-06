@@ -1,0 +1,26 @@
+2026-10-06 08:00:52.974 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7260/api/Book/add-book - application/json 344
+2026-10-06 08:00:53.051 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-06 08:00:53.064 +07:00 [INF] Route matched with {action = "AddBook", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddBook(ThucHanhWEBAPI.Models.DTO.AddBookRequestDTO) on controller ThucHanhWEBAPI.Controllers.BookController (ThucHanhWEBAPI).
+2026-10-06 08:00:53.153 +07:00 [INF] Executed DbCommand (41ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books] ([CoverUrl], [DateAdded], [DateRead], [Description], [Genre], [IsRead], [PublisherID], [Rate], [Title])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2026-10-06 08:00:53.168 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books_Authors] ([AuthorId], [BookId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2026-10-06 08:00:53.179 +07:00 [INF] Executing OkObjectResult, writing value of type 'ThucHanhWEBAPI.Models.DTO.AddBookRequestDTO'.
+2026-10-06 08:00:53.183 +07:00 [INF] Executed action ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI) in 94.9742ms
+2026-10-06 08:00:53.187 +07:00 [INF] Executed endpoint 'ThucHanhWEBAPI.Controllers.BookController.AddBook (ThucHanhWEBAPI)'
+2026-10-06 08:00:53.190 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7260/api/Book/add-book - 200 null application/json; charset=utf-8 218.6991ms
+2026-10-06 08:00:59.755 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7260/api/User/Login - application/json; charset=utf-8 null
+2026-10-06 08:00:59.762 +07:00 [INF] Executing endpoint 'ThucHanhWEBAPI.Controllers.UserController.Login (ThucHanhWEBAPI)'
+2026-10-06 08:00:59.767 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ThucHanhWEBAPI.Models.DTO.LoginRequestDTO) on controller ThucHanhWEBAPI.Controllers.UserController (ThucHanhWEBAPI).
+2026-10-06 08:00:59.802 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
